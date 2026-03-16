@@ -7,7 +7,7 @@ import { getIsGithub } from '../../utils/getIsGithub';
 
 function AppRoutes() {
   const isGithub = getIsGithub();
-  const repoName = isGithub ? "/prueba-tecnica-zbanco" : "";
+  const repoName = isGithub ? "/prueba-tecnica-zbanco/" : "";
 
   return (
     <Router basename={repoName}>
