@@ -14,7 +14,7 @@ function AppRoutes() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </Router>
