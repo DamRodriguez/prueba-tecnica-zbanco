@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./themes/default/theme.css";
 
+* {
+  font-family: var(--font-poppins);
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }

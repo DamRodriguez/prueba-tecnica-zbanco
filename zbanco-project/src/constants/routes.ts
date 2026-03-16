@@ -1,4 +1,7 @@
 export const routes = {
-  home: "/",
-  dashboard: "/dashboard"
+  basePath: "/prueba-tecnica-zbanco/",
+  pages: {
+    home: "/",
+    dashboard: "/dashboard"
+  }
 };
