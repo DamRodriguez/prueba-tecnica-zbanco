@@ -8,7 +8,6 @@ import accountsData from "../../../data/accounts.json";
 import { mapUsersToOptions } from "../../../utils/mapUsersToOptions";
 import Button from "../../../components/ui/buttons/Button";
 import showToast from "../../../components/toast/showToast";
-import { parseDestinationAccounts } from "../../../utils/parseDestinationAccounts";
 import useTransfer from "../../../components/redux/transfer/useTransfer";
 import { useState } from "react";
 
@@ -29,16 +28,17 @@ const TransferForm = () => {
   });
   const { apiErrorMessage } = useFormError(methods.formState);
 
-  const users = accountsData.users;
-  const allAccounts = mapUsersToOptions(users);
-  const mainOriginAccountId = "a1";
-  const otherOriginAccountId = "a2";
-  const destinationAccounts = allAccounts.filter(
-    a => a.id !== mainOriginAccountId && a.id !== otherOriginAccountId
+  const allAccounts = mapUsersToOptions(accountsData.users);
+
+  const selectedOrigin = methods.watch(TransferSchemaFieldNames.originAccount);
+  const selectedDestination = methods.watch(TransferSchemaFieldNames.destinationAccount);
+
+  const originOptions = allAccounts.filter(
+    (acc) => acc.id !== selectedDestination?.id
   );
-  const originAccountOptions = allAccounts.filter(
-    a =>
-      (a.id === mainOriginAccountId || a.id === otherOriginAccountId)
+
+  const destinationOptions = allAccounts.filter(
+    (acc) => acc.id !== selectedOrigin?.id
   );
 
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +66,7 @@ const TransferForm = () => {
             label={t("pages.home.transfer.labels.originAccount")}
             name={TransferSchemaFieldNames.originAccount}
             placeholder={t("pages.home.transfer.placeholders.selectAccount")}
-            options={originAccountOptions}
+            options={originOptions}
             error={apiErrorMessage !== undefined}
             errorMessage={apiErrorMessage}
             isLastErrorMessageField={false}
@@ -75,7 +75,7 @@ const TransferForm = () => {
             label={t("pages.home.transfer.labels.destinationAccount")}
             name={TransferSchemaFieldNames.destinationAccount}
             placeholder={t("pages.home.transfer.placeholders.selectAccount")}
-            options={parseDestinationAccounts(destinationAccounts)}
+            options={destinationOptions}
             error={apiErrorMessage !== undefined}
             errorMessage={apiErrorMessage}
             isLastErrorMessageField={false}

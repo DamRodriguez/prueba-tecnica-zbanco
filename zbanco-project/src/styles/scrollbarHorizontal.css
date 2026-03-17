@@ -1,0 +1,25 @@
+.scrollbarHorizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.scrollbarHorizontal::-webkit-scrollbar {
+  height: 0.5rem; 
+}
+
+.scrollbarHorizontal::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-dark);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.scrollbarHorizontal::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .scrollbarHorizontal::-webkit-scrollbar {
+    height: 0.6rem;
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Transaction History",
+  "table": {
+    "titles": {
+      "originAccount": "Origin Account",
+      "destinationAccount": "Destination Account",
+      "ammount": "Amount",
+      "date": "Date"
+    }
+  }
+}

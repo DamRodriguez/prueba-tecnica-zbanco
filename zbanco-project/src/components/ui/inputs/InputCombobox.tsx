@@ -63,6 +63,12 @@ export const InputCombobox = ({
 
   const filteredOptions = options.filter(o => o.id !== selected?.id);
 
+  const getArrowIconClassName = () => {
+    const defaultClassName = "w-4 h-4";
+    if (value?.id || isOpen) return `fill-black ${defaultClassName}`;
+    return `fill-soft-gray ${defaultClassName}`
+  }
+
   return (
     <div
       ref={wrapperRef}
@@ -94,9 +100,9 @@ export const InputCombobox = ({
 
         <>
           {isOpen ? (
-            <UpArrowIcon className="fill-soft-gray w-4 h-4" />
+            <UpArrowIcon className={getArrowIconClassName()} />
           ) : (
-            <DownArrowIcon className="fill-soft-gray w-4 h-4" />
+            <DownArrowIcon className={getArrowIconClassName()} />
           )}
         </>
       </button>

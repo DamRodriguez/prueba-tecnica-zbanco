@@ -1,4 +1,4 @@
-export const formatMoney = (value: string | undefined): string => {
+export const formatMoney = (value: string | number | undefined): string => {
   if (!value) return "";
 
   const number = Number(value);

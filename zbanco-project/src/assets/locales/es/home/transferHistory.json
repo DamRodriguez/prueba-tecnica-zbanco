@@ -1,0 +1,11 @@
+{
+  "title": "Historial de Transacciones",
+  "table": {
+    "titles": {
+      "originAccount": "Cuenta de Origen",
+      "destinationAccount": "Cuenta Destino",
+      "ammount": "Monto",
+      "date": "Fecha"
+    }
+  }
+}
