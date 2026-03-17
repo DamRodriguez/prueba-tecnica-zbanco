@@ -45,7 +45,7 @@ const Nav = () => {
               <button
                 onClick={() => handleNavClick(item.path)}
                 className={clsx(
-                  "text-xs sm:text-base leading-[1.3125rem] p-[0.6rem] px-[1.5rem] sm:px-[2rem] w-full cursor-pointer hover:bg-black/10",
+                  "text-xs sm:text-base leading-[1.3125rem] p-[0.6rem] px-[1rem] sm:px-[2rem] w-full cursor-pointer hover:bg-black/10",
                   current.link
                 )}
               >

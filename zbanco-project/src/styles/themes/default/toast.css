@@ -1,16 +1,14 @@
 .Toastify__toast {
-  padding: 0 !important;
   width: 22rem;
-  background-color: var(--color-black) !important;
-  background-opacity: 0.6;
-  box-shadow: var(--shadow-s6) !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  background-color: var(--color-white) !important;
+  box-shadow: var(--shadow-s2) !important;
   backdrop-filter: blur(3px);
-  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 6px !important;
 }
 
 .Toastify__toast-icon {
-  display: none;
 }
 
 .Toastify__progress-bar--success {

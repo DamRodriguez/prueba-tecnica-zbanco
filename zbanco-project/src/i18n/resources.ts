@@ -1,30 +1,36 @@
-import esTest from "../assets/locales/es/home/transfer.json"
-import enTest from "../assets/locales/en/home/transfer.json"
+import esTransfer from "../assets/locales/es/home/transfer.json"
+import enTransfer from "../assets/locales/en/home/transfer.json"
+import esToast from "../assets/locales/es/toast/toast.json"
+import enToast from "../assets/locales/en/toast/toast.json"
 
-export const DEFAULT_NS = "pages";
+export const DEFAULT_NS = "main";
 
 const es = {
-  pages: {
-    home: {
+  main: {
+    pages: {
+      home: {
+        transfer: esTransfer,
+      },
+      dashboard: {
 
+      },
     },
-    dashboard: {
-
-    },
-    test: esTest
-  },
+    toast: esToast
+  }
 };
 
 const en = {
-  pages: {
-    home: {
+  main: {
+    pages: {
+      home: {
+        transfer: enTransfer,
+      },
+      dashboard: {
 
+      },
     },
-    dashboard: {
-
-    },
-    test: enTest
-  },
+    toast: enToast
+  }
 };
 
 export type Resource = typeof en;

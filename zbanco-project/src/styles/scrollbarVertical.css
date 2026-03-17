@@ -3,22 +3,22 @@
 }
 
 .scrollbarCustom::-webkit-scrollbar {
-  width: 0.2rem;
+  width: 0.3rem;
 }
 
 .scrollbarCustom::-webkit-scrollbar-thumb {
-  background-color: var(--color-neutral-1000);
+  background-color: var(--color-blue-dark);
   border-radius: 1rem;
   cursor: pointer;
 }
 
 .scrollbarCustom::-webkit-scrollbar-track {
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
 }
 
 @media (min-width: 1024px) {
   .scrollbarCustom::-webkit-scrollbar {
-    width: 0.3rem;
+    width: 0.4rem;
   }
 }

@@ -1,3 +1,24 @@
 {
-  "text": "hi"
+  "title": "Transfer",
+  "labels": {
+    "originAccount": "Origin Account",
+    "destinationAccount": "Destination Account",
+    "amountToTransfer": "Amount to Transfer"
+  },
+  "buttons": {
+    "makeTransfer": "Make Transfer"
+  },
+  "accountTypes": {
+    "CheckingAccount": "Checking Account",
+    "SavingsAccount": "Savings Account"
+  },
+  "placeholders": {
+    "selectAccount": "Select an account",
+    "selectAmmount": "Enter an amount"
+  },
+  "formErrors": {
+    "noSelectAccount": "You must select an account",
+    "noSelectAmmount": "You must enter an amount",
+    "insufficientFunds": "Insufficient funds"
+  }
 }

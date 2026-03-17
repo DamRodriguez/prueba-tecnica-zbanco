@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import Nav from "./Nav";
+import { ToastContainer } from "react-toastify";
 
 const MainLayout = () => {
   return (
     <div className="min-w-[20rem] max-w-480 mx-auto ">
+      <ToastContainer />
       <Header />
       <div className="flex w-full">
         <Nav />

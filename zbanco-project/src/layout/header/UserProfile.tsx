@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import profileImage from "../../assets/images/mainUser.png";
 import { DownArrowIcon, UpArrowIcon } from "../../icons/header";
 import { MotionHeight } from "../../components/motion/MotionHeight";
 import { AnimatePresence } from "framer-motion";
@@ -23,15 +22,15 @@ const UserProfile = () => {
     >
       <div onClick={() => setIsUserSettingsOpen(!isUserSettingsOpen)} className="flex items-center gap-2">
         <img
-          src={profileImage}
+          src="https://randomuser.me/api/portraits/men/32.jpg"
           alt="Donde Salgo Logo"
           className="w-[1.5rem] sm:w-[2.5rem] aspect-square rounded-full object-cover shadow-s1"
         />
         <div>
           {isUserSettingsOpen ? (
-            <UpArrowIcon className="w-[1rem] h-[1rem] sm:w-[1.5rem] sm:h-[1.5rem]" />
+            <UpArrowIcon className="w-[1rem] h-[1rem] sm:w-[1.5rem] sm:h-[1.5rem] fill-white" />
           ) : (
-            <DownArrowIcon className="w-[1rem] h-[1rem] sm:w-[1.5rem] sm:h-[1.5rem]" />
+            <DownArrowIcon className="w-[1rem] h-[1rem] sm:w-[1.5rem] sm:h-[1.5rem] fill-white" />
           )}
         </div>
       </div>

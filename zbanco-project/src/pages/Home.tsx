@@ -1,11 +1,10 @@
-import { useTranslation } from "react-i18next";
+import TransferSection from "../components/pages/home/TransferSection";
 
 const Home = () => {
-  const { t } = useTranslation("pages");
   return (
-    <p>
-      {t("test.text")}
-    </p>
+    <div>
+      <TransferSection />
+    </div>
   );
 };
 

@@ -1,34 +1,127 @@
-[
-  {
-    "id": "1",
-    "name": "Cuenta Corriente",
-    "holder": "Juan Pérez",
-    "balance": 5000,
-    "type": "corriente",
-    "photo": "https://randomuser.me/api/portraits/men/1.jpg"
-  },
-  {
-    "id": "2",
-    "name": "Caja de Ahorro",
-    "holder": "Juan Pérez",
-    "balance": 3200,
-    "type": "ahorro",
-    "photo": "https://randomuser.me/api/portraits/men/1.jpg"
-  },
-  {
-    "id": "3",
-    "name": "Caja de Ahorro",
-    "holder": "Maria Gómez",
-    "balance": 4500,
-    "type": "ahorro",
-    "photo": "https://randomuser.me/api/portraits/women/1.jpg"
-  },
-  {
-    "id": "4",
-    "name": "Cuenta Corriente",
-    "holder": "Carlos Ruiz",
-    "balance": 3800,
-    "type": "corriente",
-    "photo": "https://randomuser.me/api/portraits/men/2.jpg"
-  }
-]
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Juan Perez",
+      "image": "https://randomuser.me/api/portraits/men/32.jpg",
+      "accounts": [
+        {
+          "id": "a1",
+          "accountType": "savings",
+          "accountNumber": "1234",
+          "balance": "120000"
+        },
+        {
+          "id": "a2",
+          "accountType": "checking",
+          "accountNumber": "9999",
+          "balance": "80000"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Pedro Lopez",
+      "image": "https://randomuser.me/api/portraits/men/44.jpg",
+      "accounts": [
+        {
+          "id": "a3",
+          "accountType": "checking",
+          "accountNumber": "5678",
+          "balance": "45000"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Pablo Rodriguez",
+      "image": "https://randomuser.me/api/portraits/men/65.jpg",
+      "accounts": [
+        {
+          "id": "a4",
+          "accountType": "savings",
+          "accountNumber": "9012",
+          "balance": "3200"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Esteban Mendez",
+      "image": "https://randomuser.me/api/portraits/men/12.jpg",
+      "accounts": [
+        {
+          "id": "a5",
+          "accountType": "checking",
+          "accountNumber": "3456",
+          "balance": "980000"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Lucia Garcia",
+      "image": "https://randomuser.me/api/portraits/women/5.jpg",
+      "accounts": [
+        {
+          "id": "a6",
+          "accountType": "savings",
+          "accountNumber": "7890",
+          "balance": "15000"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Carlos Ruiz",
+      "image": "https://randomuser.me/api/portraits/men/6.jpg",
+      "accounts": [
+        {
+          "id": "a7",
+          "accountType": "checking",
+          "accountNumber": "2109",
+          "balance": "67000"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Elena Torres",
+      "image": "https://randomuser.me/api/portraits/women/7.jpg",
+      "accounts": [
+        {
+          "id": "a8",
+          "accountType": "savings",
+          "accountNumber": "4321",
+          "balance": "2500"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Marcos Diaz",
+      "image": "https://randomuser.me/api/portraits/men/8.jpg",
+      "accounts": [
+        {
+          "id": "a9",
+          "accountType": "checking",
+          "accountNumber": "6543",
+          "balance": "12500"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Sofia Luna",
+      "image": "https://randomuser.me/api/portraits/women/9.jpg",
+      "accounts": [
+        {
+          "id": "a10",
+          "accountType": "savings",
+          "accountNumber": "8765",
+          "balance": "310000"
+        }
+      ]
+    }
+  ]
+}
