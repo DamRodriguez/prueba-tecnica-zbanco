@@ -1,21 +1,25 @@
+import type { ParseKeys } from "i18next";
 import { useState } from "react";
-import type { FormState } from "react-hook-form";
+import type { FormState, FieldValues } from "react-hook-form";
 
 type UseFormErrorReturn = {
-  apiErrorMessage: string | undefined;
-  setApiErrorMessage: React.Dispatch<React.SetStateAction<string | undefined>>;
+  apiErrorMessage: ParseKeys | undefined;
+  setApiErrorMessage: React.Dispatch<React.SetStateAction<ParseKeys | undefined>>;
 };
 
-const useFormError = <T extends Record<string, unknown>>(
+const useFormError = <T extends FieldValues>(
   formState: FormState<T>,
 ): UseFormErrorReturn => {
-  const [apiErrorMessage, setApiErrorMessage] = useState<string | undefined>();
+  const [apiErrorMessage, setApiErrorMessage] = useState<ParseKeys | undefined>();
 
   const finalError = formState.isSubmitting
     ? undefined
     : apiErrorMessage;
 
-  return { apiErrorMessage: finalError, setApiErrorMessage };
+  return {
+    apiErrorMessage: finalError,
+    setApiErrorMessage
+  };
 };
 
 export default useFormError;

@@ -1,5 +1,6 @@
 import type { ReactElement } from "react";
 import { Controller, type FieldValues, type Path, useFormContext } from "react-hook-form";
+import type { ParseKeys } from "i18next";
 import Label from "../inputs/Label";
 import FormErrorMessage from "./FormErrorMessage";
 
@@ -10,7 +11,7 @@ export type FormFieldProps<T extends FieldValues> = {
   input?: (
     props: Record<string, unknown>
   ) => ReactElement;
-  errorMessage?: string;
+  errorMessage?: ParseKeys;
   isLastErrorMessageField?: boolean;
 };
 
@@ -29,6 +30,10 @@ function FormField<T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => {
+        const currentError = (isLastErrorMessageField && errorMessage)
+          ? errorMessage
+          : fieldState.error?.message;
+
         return (
           <div className="w-full flex flex-col gap-[0.5rem]">
             <div className="flex flex-col gap-[0.5rem] group">
@@ -52,11 +57,9 @@ function FormField<T extends FieldValues>({
                 )}
               </div>
             </div>
-            {(isLastErrorMessageField && errorMessage) || fieldState.error?.message ? (
+            {currentError ? (
               <FormErrorMessage
-                errorMessage={isLastErrorMessageField && errorMessage
-                  ? errorMessage
-                  : fieldState.error?.message}
+                errorMessage={currentError as ParseKeys}
               />
             ) : null}
           </div>
