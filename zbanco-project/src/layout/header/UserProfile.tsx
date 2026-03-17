@@ -1,26 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import profileImage from "../../assets/images/mainUser.png";
 import { DownArrowIcon, UpArrowIcon } from "../../icons/header";
 import { MotionHeight } from "../../components/motion/MotionHeight";
 import { AnimatePresence } from "framer-motion";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 const UserProfile = () => {
   const [isUserSettingsOpen, setIsUserSettingsOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsUserSettingsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  useClickOutside(containerRef, () => { setIsUserSettingsOpen(false); });
 
   const settingsOptions = [
     { text: "Ver perfil" },
@@ -37,7 +25,7 @@ const UserProfile = () => {
         <img
           src={profileImage}
           alt="Donde Salgo Logo"
-          className="w-[2rem] sm:w-[2.5rem] aspect-square rounded-full object-cover shadow-s1"
+          className="w-[1.5rem] sm:w-[2.5rem] aspect-square rounded-full object-cover shadow-s1"
         />
         <div>
           {isUserSettingsOpen ? (
@@ -50,7 +38,7 @@ const UserProfile = () => {
 
       <AnimatePresence>
         {isUserSettingsOpen && (
-          <MotionHeight className="absolute top-full mt-4 right-0 w-[7rem] sm:w-[10rem] bg-soft-white shadow-s2 rounded-xs z-50 overflow-hidden">
+          <MotionHeight className="absolute top-full mt-4 sm:mt-5 right-0 w-[7rem] sm:w-[10rem] bg-soft-white shadow-s2 rounded-xs z-50 overflow-hidden">
             {settingsOptions.map((item, index) => (
               <p
                 key={index}
