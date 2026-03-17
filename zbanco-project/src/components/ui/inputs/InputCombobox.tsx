@@ -103,7 +103,7 @@ export const InputCombobox = ({
 
       <AnimatePresence>
         {isOpen && (
-          <div className="absolute z-50 mt-1 w-full bg-white border rounded-md shadow-md overflow-hidden">
+          <div className="absolute z-50 mt-1 w-full bg-white border rounded-md shadow-md overflow-hidden shadow-s2">
             <MotionHeight>
               <div className="max-h-[15rem] scrollbarCustom overflow-y-auto">
                 {filteredOptions.map(option => {

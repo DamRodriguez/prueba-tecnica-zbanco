@@ -9,9 +9,12 @@ import { mapUsersToOptions } from "../../../utils/mapUsersToOptions";
 import Button from "../../../components/ui/buttons/Button";
 import showToast from "../../../components/toast/showToast";
 import { parseDestinationAccounts } from "../../../utils/parseDestinationAccounts";
+import useTransfer from "../../../components/redux/transfer/useTransfer";
+import { useState } from "react";
 
 const TransferForm = () => {
   const { t } = useTranslation();
+  const { addTransfer } = useTransfer();
   const methods = useForm<TransferSchemaType>({
     defaultValues: {
       originAccount: undefined,
@@ -38,10 +41,17 @@ const TransferForm = () => {
       (a.id === mainOriginAccountId || a.id === otherOriginAccountId)
   );
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = async (data: TransferSchemaType) => {
-    const destinationName = data.destinationAccount?.name;
-    showToast("success", `${t("toast.transfer.success")} ${destinationName}`);
-    // methods.reset();
+    setIsLoading(true);
+    setTimeout(() => {
+      addTransfer(data.originAccount, data.destinationAccount, data.amountToTransfer);
+      const destinationName = data.destinationAccount?.name;
+      showToast("success", `${t("toast.transfer.success")} ${destinationName}`);
+      // methods.reset();
+      setIsLoading(false)
+    }, 2000);
   };
 
   return (
@@ -83,8 +93,7 @@ const TransferForm = () => {
         <Button
           variant="primary"
           type="submit"
-          full
-          isLoading={methods.formState.isSubmitting}
+          isLoading={isLoading}
         >
           {t("pages.home.transfer.buttons.makeTransfer")}
         </Button>

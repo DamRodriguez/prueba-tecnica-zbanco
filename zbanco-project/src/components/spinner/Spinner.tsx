@@ -4,7 +4,7 @@ export type SpinnerProps = {
   borderWidth?: number;
 };
 
-const Spinner = ({ size = 4, color = "#514FA0", borderWidth = 0.35 }: SpinnerProps) => {
+const Spinner = ({ size = 4, color = "#fff", borderWidth = 0.35 }: SpinnerProps) => {
   return (
     <div
       className="animate-spin"

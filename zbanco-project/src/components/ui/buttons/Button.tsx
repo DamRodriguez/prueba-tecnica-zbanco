@@ -21,7 +21,7 @@ type ButtonProps = {
 const Button = (props: ButtonProps) => {
   const className = clsx(buttonClass({
     intent: props.variant,
-    disabled: props.disabled,
+    disabled: props.disabled || props.isLoading,
     outline: props.outline,
     full: props.full,
   }), props.className);
@@ -29,7 +29,7 @@ const Button = (props: ButtonProps) => {
     <button
       onClick={props.onClick}
       type={props.type}
-      disabled={props.disabled}
+      disabled={props.disabled || props.isLoading}
       className={className}
       form={props.form}
     >

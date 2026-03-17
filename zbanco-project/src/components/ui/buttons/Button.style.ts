@@ -11,7 +11,7 @@ export const buttonClass = tv({
       quintary: "bg-neutral-100 text-neutral-100",
     },
     disabled: {
-      true: "cursor-not-allowed !bg-soft-gray",
+      true: "cursor-not-allowed bg-soft-gray",
       false: "",
     },
     outline: {

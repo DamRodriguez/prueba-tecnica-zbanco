@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import type { ParseKeys } from "i18next";
 import { useTranslation } from "react-i18next";
 
 type FormErrorProps = {
-  errorMessage?: string;
+  errorMessage?: ParseKeys;
   className?: string;
 };
 
