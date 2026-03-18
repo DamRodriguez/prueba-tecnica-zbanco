@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ComboboxOption } from "../../ui/inputs/InputCombobox";
 
-interface Transaction {
+export interface Transaction {
   id: string;
   originAccount: ComboboxOption;
   destinationAccount: ComboboxOption;

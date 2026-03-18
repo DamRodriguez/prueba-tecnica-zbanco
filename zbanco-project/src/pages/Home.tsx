@@ -1,4 +1,4 @@
-import TransferHistorySection from "../components/pages/home/TransferHistorySection";
+import TransferHistorySection from "../components/pages/home/transfer-history/TransferHistorySection";
 import TransferSection from "../components/pages/home/TransferSection";
 
 const Home = () => {

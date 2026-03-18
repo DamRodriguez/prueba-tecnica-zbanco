@@ -6,6 +6,11 @@
       "destinationAccount": "Destination Account",
       "ammount": "Amount",
       "date": "Date"
-    }
+    },
+    "filters": {
+      "byAccount": "Search by account ...",
+      "byAmmount": "Minimum amount ..."
+    },
+    "emptyTable": "No transactions found"
   }
 }
