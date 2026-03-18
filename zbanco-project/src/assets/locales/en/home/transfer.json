@@ -19,6 +19,7 @@
   "formErrors": {
     "noSelectAccount": "You must select an account",
     "noSelectAmmount": "You must enter an amount",
-    "insufficientFunds": "Insufficient funds"
+    "insufficientFunds": "Insufficient funds",
+    "greaterThan0": "The amount must be greater than 0"
   }
 }

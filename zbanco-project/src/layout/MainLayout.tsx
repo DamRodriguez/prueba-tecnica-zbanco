@@ -7,13 +7,13 @@ import ReduxStoreProvider from "../components/provider/ReduxStoreProvider";
 const MainLayout = () => {
   return (
     <ReduxStoreProvider>
+      <ToastContainer />
       <div className="min-w-[20rem] max-w-480 mx-auto ">
-        <ToastContainer />
         <Header />
         <div className="flex w-full">
           <Nav />
-          <div className="antialiased w-full min-h-svh flex flex-col bg-soft-white pl-[7rem] sm:pl-[10rem] ">
-            <main className="w-full p-6 sm:p-10">
+          <div className="antialiased w-full min-h-svh flex flex-col bg-soft-white pl-[4rem] sm:pl-[10rem] ">
+            <main className="w-full p-4 sm:p-10">
               <Outlet />
             </main>
           </div>

@@ -1,0 +1,30 @@
+{
+  "title": "Dashboard",
+  "sections": {
+    "totalTransactions": {
+      "title": "Total Transactions"
+    },
+    "totalTransferred": {
+      "title": "Total Transferred"
+    },
+    "mostActiveAccount": {
+      "title": "Most Active Account",
+      "accountData": {
+        "transfers": "Transfers"
+      }
+    },
+    "transferredAmounts": {
+      "title": "Transferred Amounts",
+      "amountTypes": {
+        "low": "Small (< $10)",
+        "medium": "Medium ($10 - $100)",
+        "high": "Large (> $100)"
+      },
+      "toolTipText": "Amount"
+    },
+    "transferSummary": {
+      "title": "Transfer Summary",
+      "toolTipText": "Transfers"
+    }
+  }
+}

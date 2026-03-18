@@ -4,6 +4,8 @@ import esToast from "../assets/locales/es/toast/toast.json"
 import enToast from "../assets/locales/en/toast/toast.json"
 import esTransferHistory from "../assets/locales/es/home/transferHistory.json"
 import enTransferHistory from "../assets/locales/en/home/transferHistory.json"
+import esDashboard from "../assets/locales/es/dashboard.json"
+import enDashboard from "../assets/locales/en/dashboard.json"
 
 export const DEFAULT_NS = "main";
 
@@ -14,9 +16,7 @@ const es = {
         transfer: esTransfer,
         transferHistory: esTransferHistory,
       },
-      dashboard: {
-
-      },
+      dashboard: esDashboard,
     },
     toast: esToast
   }
@@ -29,9 +29,7 @@ const en = {
         transfer: enTransfer,
         transferHistory: enTransferHistory
       },
-      dashboard: {
-
-      },
+      dashboard: enDashboard,
     },
     toast: enToast
   }

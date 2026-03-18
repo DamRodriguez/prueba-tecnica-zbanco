@@ -9,8 +9,8 @@ type BaseContainerProps = {
 const BaseContainer = (props: BaseContainerProps) => {
   return (
     <div className={clsx("bg-white border border-soft-gray rounded-md shadow-s2", props.className)}>
-      <div>
-        <h3 className="text-dark-gray font-semibold text-lg p-4 border-b border-b-soft-gray">
+      <div className="bg-soft-gray/15 shadow-s1">
+        <h3 className="text-dark-gray font-semibold text-lg p-4 ">
           {props.title}
         </h3>
       </div>

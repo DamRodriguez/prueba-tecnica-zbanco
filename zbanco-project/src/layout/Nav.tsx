@@ -1,16 +1,18 @@
 import clsx from "clsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../constants/routes";
+import { DashboardIcon, HomeIcon } from "../icons/nav";
 
 interface NavItem {
   id: number;
   text: string;
   path: string;
+  icon: React.ReactElement;
 }
 
 const navItems: NavItem[] = [
-  { id: 0, text: "Inicio", path: routes.pages.home },
-  { id: 1, text: "Dashboard", path: routes.pages.dashboard },
+  { id: 0, text: "Inicio", path: routes.pages.home, icon: <HomeIcon /> },
+  { id: 1, text: "Dashboard", path: routes.pages.dashboard, icon: <DashboardIcon /> },
 ];
 
 const navClasses = {
@@ -35,7 +37,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-soft-gray/20 w-fit h-screen fixed z-10 shadow-s3">
+    <nav className="bg-white w-fit h-screen fixed z-10 shadow-s3">
       <ul className="flex flex-col">
         {navItems.map(item => {
           const current = activeItemId === item.id ? navClasses.active : navClasses.inactive;
@@ -45,11 +47,16 @@ const Nav = () => {
               <button
                 onClick={() => handleNavClick(item.path)}
                 className={clsx(
-                  "text-xs sm:text-base leading-[1.3125rem] p-[0.6rem] px-[1rem] sm:px-[2rem] w-full cursor-pointer hover:bg-black/10",
+                  "text-xs sm:text-base font-medium flex justify-center items-center p-[0.6rem] px-[1rem] sm:px-[2rem] w-full cursor-pointer hover:bg-black/10",
                   current.link
                 )}
               >
-                {item.text}
+                <div className="flex sm:hidden">
+                  {item.icon}
+                </div>
+                <div className="sm:flex hidden">
+                  {item.text}
+                </div>
               </button>
             </li>
           );

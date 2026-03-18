@@ -2,6 +2,8 @@ import { useState, useMemo, useEffect } from "react";
 import type { Transaction } from "../../../../redux/transfer/transferSlice";
 import { InputNumber } from "../../../../ui/inputs/InputNumber";
 import { useTranslation } from "react-i18next";
+import IconContainer from "../../../../../other/IconContainer";
+import { AmountIcon } from "../../../../../icons/transferHistoryTable";
 
 type AmountFilterProps = {
   transactions: Transaction[];
@@ -24,12 +26,19 @@ const AmountFilter = ({ transactions, onFilter }: AmountFilterProps) => {
   }, [filtered, onFilter]);
 
   return (
-    <InputNumber
-      placeholder={t("pages.home.transferHistory.table.filters.byAmmount")}
-      value={minAmount}
-      onChange={(e) => setMinAmount(e.target.value)}
-      leftItem={<span>$</span>}
-    />
+    <div className="flex justify-center items-center gap-3">
+      <IconContainer>
+        <AmountIcon />
+      </IconContainer>
+      <div className="w-full">
+        <InputNumber
+          placeholder={t("pages.home.transferHistory.table.filters.byAmmount")}
+          value={minAmount}
+          onChange={(e) => setMinAmount(e.target.value)}
+          leftItem={<span>$</span>}
+        />
+      </div>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { z } from "zod";
 const noSelectAccount = "pages.home.transfer.formErrors.noSelectAccount";
 const noSelectAmount = "pages.home.transfer.formErrors.noSelectAmmount";
 const insufficientFunds = "pages.home.transfer.formErrors.insufficientFunds";
+const greaterThan0 = "pages.home.transfer.formErrors.greaterThan0";
 
 export const TransferSchema = z
   .object({
@@ -20,25 +21,30 @@ export const TransferSchema = z
       .string()
       .min(1, { message: noSelectAmount })
   })
-  .refine(
-    (data) => {
-      const balance = Number(data.originAccount?.balance);
-      const amount = Number(data.amountToTransfer);
+  .superRefine((data, ctx) => {
+    const amount = Number(data.amountToTransfer);
 
-      if (!data.originAccount) return true;
-
-      return amount <= balance;
-    },
-    {
-      message: insufficientFunds,
-      path: ["amountToTransfer"],
+    if (amount === 0) {
+      ctx.addIssue({
+        code: "custom",
+        message: greaterThan0,
+        path: ["amountToTransfer"],
+      });
     }
-  );
 
-export const TransferSchemaFieldNames = {
-  originAccount: "originAccount",
-  destinationAccount: "destinationAccount",
-  amountToTransfer: "amountToTransfer",
-} as const;
+    if (data.originAccount) {
+      const balance = Number(data.originAccount.balance);
+
+      if (amount > balance) {
+        ctx.addIssue({
+          code: "custom",
+          message: insufficientFunds,
+          path: ["amountToTransfer"],
+        });
+      }
+    }
+  });
+
+export const TransferSchemaFieldNames = TransferSchema.keyof().enum;
 
 export type TransferSchemaType = z.infer<typeof TransferSchema>;

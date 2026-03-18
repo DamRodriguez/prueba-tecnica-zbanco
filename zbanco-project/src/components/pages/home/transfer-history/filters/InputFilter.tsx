@@ -2,6 +2,8 @@ import { useMemo, useState, useEffect } from "react";
 import Input from "../../../../ui/inputs/input/Input";
 import type { Transaction } from "../../../../redux/transfer/transferSlice";
 import { useTranslation } from "react-i18next";
+import { SearchIcon } from "../../../../../icons/transferHistoryTable";
+import IconContainer from "../../../../../other/IconContainer";
 
 type InputFilterProps = {
   transactions: Transaction[];
@@ -27,7 +29,10 @@ const InputFilter = ({ transactions, onFilter }: InputFilterProps) => {
   }, [filteredTransactions, onFilter]);
 
   return (
-    <div className="mb-4">
+    <div className="flex justify-center items-center gap-3">
+      <IconContainer>
+        <SearchIcon />
+      </IconContainer>
       <Input
         placeholder={t("pages.home.transferHistory.table.filters.byAccount")}
         value={searchTerm}

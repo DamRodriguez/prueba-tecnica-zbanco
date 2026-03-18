@@ -4,10 +4,13 @@ import {
 import { useAppDispatch, useAppSelector } from "../hooks";
 import type { ComboboxOption } from "../../ui/inputs/InputCombobox";
 import { useMemo } from "react";
+import type { MonthData } from "../../pages/dashboard/StackedBarChart/StackedBarChart";
+import { useTranslation } from "react-i18next";
 
 const useTransfer = () => {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.transfer);
+  const { t, i18n } = useTranslation();
 
   const transactions = state.transactions;
 
@@ -19,8 +22,6 @@ const useTransfer = () => {
   );
 
   const mostActiveAccount = useMemo(() => {
-    if (transactions.length === 0) return null;
-
     const frequency: Record<string, number> = {};
     transactions.forEach((t) => {
       const id = t.originAccount.id;
@@ -38,6 +39,64 @@ const useTransfer = () => {
     };
   }, [transactions]);
 
+  const amountDistribution = useMemo(() => {
+    let low = 0;
+    let medium = 0;
+    let high = 0;
+
+    transactions.forEach((t) => {
+      if (t.amount < 10) {
+        low++;
+      } else if (t.amount <= 100) {
+        medium++;
+      } else {
+        high++;
+      }
+    });
+
+    return [
+      { name: t("pages.dashboard.sections.transferredAmounts.amountTypes.low"), value: low, color: "#94A3B8" },
+      { name: t("pages.dashboard.sections.transferredAmounts.amountTypes.medium"), value: medium, color: "#3B82F6" },
+      { name: t("pages.dashboard.sections.transferredAmounts.amountTypes.high"), value: high, color: "#1E3A8A" },
+    ].filter(item => item.value > 0);
+  }, [transactions, t]);
+
+  const monthlyStatus: MonthData[] = useMemo(() => {
+    const esMonthNames = [
+      "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+      "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+    ];
+    const enMonthNames = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    const finalMonthNames = i18n.language === "es" ? esMonthNames : enMonthNames;
+
+    if (!transactions || transactions.length === 0) {
+      return [];
+    }
+
+    const currentYear = new Date().getFullYear();
+
+    const counts: Record<string, number> = {};
+    finalMonthNames.forEach(name => { counts[name] = 0; });
+
+    transactions.forEach((t) => {
+      const transactionDate = new Date(t.date);
+
+      if (transactionDate.getFullYear() === currentYear) {
+        const monthName = finalMonthNames[transactionDate.getMonth()];
+        counts[monthName] += 1;
+      }
+    });
+
+    return finalMonthNames.map(name => ({
+      name,
+      value: counts[name]
+    }));
+  }, [transactions, i18n.language]);
+
   const addTransfer = (
     origin: ComboboxOption,
     destination: ComboboxOption,
@@ -51,7 +110,9 @@ const useTransfer = () => {
     transactions,
     totalTransactions,
     totalAmountTransferred,
-    mostActiveAccount
+    mostActiveAccount,
+    amountDistribution,
+    monthlyStatus
   };
 };
 
