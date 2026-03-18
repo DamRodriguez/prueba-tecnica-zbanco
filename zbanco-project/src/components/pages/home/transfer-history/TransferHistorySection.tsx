@@ -6,7 +6,7 @@ import { formatDate } from "../../../../utils/formatDate";
 import "../../../../styles/scrollbarHorizontal.css"
 import "../../../../styles/scrollbarVertical.css"
 import { useState } from "react";
-import InputFilter from "./filters/inputFilter";
+import InputFilter from "./filters/InputFilter";
 import AmountFilter from "./filters/AmountFilter";
 
 const TransferHistorySection = () => {
