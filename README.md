@@ -46,7 +46,7 @@ npm run dev
 ```
 ### 3. Configuración de Variables de Entorno (Importante)
 
-Para que el monitor de Criptomonedas funcione en tiempo real mediante WebSockets, debe crear un archivo llamado `.env` en la raíz de la carpeta `zbanco-project` (ubicado al mismo nivel que el archivo `package.json`):
+Para que el monitor de Criptomonedas funcione en tiempo real mediante WebSockets (localmente), debe crear un archivo llamado `.env` en la raíz de la carpeta `zbanco-project` (ubicado al mismo nivel que el archivo `package.json`):
 
 ```env
 VITE_FINNHUB_KEY=tu_api_key_aquí
