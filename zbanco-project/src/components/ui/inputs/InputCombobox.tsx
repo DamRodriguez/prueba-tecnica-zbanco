@@ -4,25 +4,20 @@ import clsx from "clsx";
 import { inputClass } from "./input/Input.style";
 import { useClickOutside } from "../../../hooks/useClickOutside";
 import { DownArrowIcon, UpArrowIcon } from "../../../icons/header";
-import OptionContent from "../../../other/OptionContent";
 import { MotionHeight } from "../../motion/MotionHeight";
 import { AnimatePresence } from "framer-motion";
-import "../../../styles/scrollbarVertical.css"
+import "../../../styles/scrollbarVertical.css";
 
-export type ComboboxOption = {
-  id: string;
-  image: string;
-  name: string;
-  accountType: string;
-  accountNumber: string;
-  balance: string | undefined;
-};
+export interface BaseOption {
+  id: string | number;
+}
 
-export type InputComboboxProps = {
+export type InputComboboxProps<T extends BaseOption> = {
   name?: string;
-  options: ComboboxOption[];
-  value?: ComboboxOption;
-  onChange?: (option: ComboboxOption) => void;
+  options: T[];
+  value?: T;
+  onChange?: (option: T) => void;
+  renderOption: (option: T) => React.ReactNode;
   ref?: RefCallBack;
   disabled?: boolean;
   className?: string;
@@ -30,21 +25,23 @@ export type InputComboboxProps = {
   placeholder?: string;
 };
 
-export const InputCombobox = ({
+export const InputCombobox = <T extends BaseOption>({
   name,
   options,
   value,
   onChange,
+  renderOption,
   ref,
   disabled,
   className,
   error,
   placeholder,
-}: InputComboboxProps) => {
+}: InputComboboxProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<ComboboxOption | undefined>(value);
+  const [selected, setSelected] = useState<T | undefined>(value);
   const wrapperRef = useRef<HTMLDivElement>(null);
   useClickOutside(wrapperRef, () => setIsOpen(false));
+  const filteredOptions = options.filter((o) => o.id !== selected?.id);
 
   useEffect(() => {
     if (value && value.id) {
@@ -55,56 +52,52 @@ export const InputCombobox = ({
     }
   }, [value]);
 
-  const handleSelect = (option: ComboboxOption) => {
+  const handleSelect = (option: T) => {
     setSelected(option);
     onChange?.(option);
     setIsOpen(false);
   };
 
-  const filteredOptions = options.filter(o => o.id !== selected?.id);
-
   const getArrowIconClassName = () => {
     const defaultClassName = "w-4 h-4";
-    if (value?.id || isOpen) return `fill-black ${defaultClassName}`;
-    return `fill-soft-gray ${defaultClassName}`
-  }
+    if (selected?.id || isOpen) return `fill-black ${defaultClassName}`;
+    return `fill-soft-gray ${defaultClassName}`;
+  };
 
   return (
-    <div
-      ref={wrapperRef}
-      className={clsx("relative w-full", className)}
-    >
+    <div ref={wrapperRef} className={clsx("relative w-full", className)}>
       <button
         type="button"
         disabled={disabled}
-        onClick={() => setIsOpen(prev => !prev)}
-        className={clsx(inputClass({
-          hasError: error,
-          hasValue: value?.id !== undefined,
-          disabled: disabled,
-        }), className,
-          "flex items-center justify-between cursor-pointer"
+        onClick={() => setIsOpen((prev) => !prev)}
+        className={clsx(
+          inputClass({
+            hasError: error,
+            hasValue: selected?.id !== undefined,
+            disabled: disabled,
+          }),
+          "flex items-center justify-between cursor-pointer w-full"
         )}
       >
-        {selected ? (
-          <OptionContent option={selected} />
-        ) : (
-          <>
-            {placeholder && (
-              <span className="text-soft-gray text-xs sm:text-sm">
+        <div className="flex-1 text-left overflow-hidden">
+          {selected ? (
+            renderOption(selected)
+          ) : (
+            placeholder && (
+              <span className="text-soft-gray text-xs sm:text-sm truncate">
                 {placeholder}
               </span>
-            )}
-          </>
-        )}
+            )
+          )}
+        </div>
 
-        <>
+        <div className="ml-2 flex-shrink-0">
           {isOpen ? (
             <UpArrowIcon className={getArrowIconClassName()} />
           ) : (
             <DownArrowIcon className={getArrowIconClassName()} />
           )}
-        </>
+        </div>
       </button>
 
       <AnimatePresence>
@@ -112,17 +105,21 @@ export const InputCombobox = ({
           <div className="absolute z-50 mt-1 w-full bg-white border rounded-md shadow-md overflow-hidden shadow-s2">
             <MotionHeight>
               <div className="max-h-[10.5rem] sm:max-h-[15.5rem] scrollbarCustom overflow-y-auto">
-                {filteredOptions.map(option => {
-                  return (
+                {filteredOptions.length > 0 ? (
+                  filteredOptions.map((option) => (
                     <div
                       key={option.id}
                       onClick={() => handleSelect(option)}
-                      className="py-[0.5rem] px-[1rem] hover:bg-soft-gray/15"
+                      className="py-[0.5rem] px-[1rem] hover:bg-soft-gray/15 cursor-pointer transition-colors"
                     >
-                      <OptionContent option={option} />
+                      {renderOption(option)}
                     </div>
-                  )
-                })}
+                  ))
+                ) : (
+                  <div className="py-2 px-4 text-sm text-soft-gray">
+                    No hay más opciones
+                  </div>
+                )}
               </div>
             </MotionHeight>
           </div>
@@ -133,7 +130,7 @@ export const InputCombobox = ({
         type="hidden"
         name={name}
         ref={ref}
-        value={selected?.id || undefined}
+        value={selected?.id || ""}
       />
     </div>
   );

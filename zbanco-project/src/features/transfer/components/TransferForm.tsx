@@ -11,6 +11,7 @@ import showToast from "../../../components/toast/showToast";
 import useTransfer from "../../../components/redux/transfer/useTransfer";
 import { useState } from "react";
 import MotionStagger from "../../../components/motion/MotionStagger";
+import AccountOption, { type AccountOptionData } from "../../../other/AccountOption";
 
 const TransferForm = () => {
   const { t } = useTranslation();
@@ -28,21 +29,19 @@ const TransferForm = () => {
     reValidateMode: "onSubmit",
   });
   const { apiErrorMessage } = useFormError(methods.formState);
-
+  const [isLoading, setIsLoading] = useState(false);
   const allAccounts = mapUsersToOptions(accountsData.users);
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const selectedOrigin = methods.watch(TransferSchemaFieldNames.originAccount);
   const selectedDestination = methods.watch(TransferSchemaFieldNames.destinationAccount);
 
   const originOptions = allAccounts.filter(
     (acc) => acc.id !== selectedDestination?.id
   );
-
   const destinationOptions = allAccounts.filter(
     (acc) => acc.id !== selectedOrigin?.id
   );
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data: TransferSchemaType) => {
     setIsLoading(true);
@@ -55,6 +54,15 @@ const TransferForm = () => {
     }, 2000);
   };
 
+  const inputCommonProps = {
+    error: apiErrorMessage !== undefined,
+    errorMessage: apiErrorMessage,
+  };
+
+  const renderAccountOption = (option: AccountOptionData) => (
+    <AccountOption option={option} />
+  );
+
   return (
     <FormProvider {...methods}>
       <Form
@@ -64,31 +72,27 @@ const TransferForm = () => {
       >
         <MotionStagger className="flex flex-col gap-[1.5rem]">
           <Form.InputCombobox
+            {...inputCommonProps}
             label={t("pages.home.transfer.labels.originAccount")}
             name={TransferSchemaFieldNames.originAccount}
             placeholder={t("pages.home.transfer.placeholders.selectAccount")}
             options={originOptions}
-            error={apiErrorMessage !== undefined}
-            errorMessage={apiErrorMessage}
-            isLastErrorMessageField={false}
+            renderOption={renderAccountOption}
           />
           <Form.InputCombobox
+            {...inputCommonProps}
             label={t("pages.home.transfer.labels.destinationAccount")}
             name={TransferSchemaFieldNames.destinationAccount}
             placeholder={t("pages.home.transfer.placeholders.selectAccount")}
             options={destinationOptions}
-            error={apiErrorMessage !== undefined}
-            errorMessage={apiErrorMessage}
-            isLastErrorMessageField={false}
+            renderOption={renderAccountOption}
           />
           <Form.InputNumber
+            {...inputCommonProps}
             label={t("pages.home.transfer.labels.amountToTransfer")}
             name={TransferSchemaFieldNames.amountToTransfer}
             placeholder={t("pages.home.transfer.placeholders.selectAmmount")}
-            error={apiErrorMessage !== undefined}
-            errorMessage={apiErrorMessage}
             leftItem={<span>$</span>}
-            isLastErrorMessageField={false}
           />
         </MotionStagger>
         <Button

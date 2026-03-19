@@ -10,12 +10,6 @@
           "accountType": "savings",
           "accountNumber": "1234",
           "balance": "120000"
-        },
-        {
-          "id": "a2",
-          "accountType": "checking",
-          "accountNumber": "9999",
-          "balance": "80000"
         }
       ]
     },

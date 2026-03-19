@@ -1,8 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { formatMoney } from "../utils/formatMoney";
-import type { ComboboxOption } from "../components/ui/inputs/InputCombobox";
 
-const OptionContent = ({ option }: { option: ComboboxOption }) => {
+export type AccountOptionData = {
+  id: string;
+  image: string;
+  name: string;
+  accountType: string;
+  accountNumber: string;
+  balance: string | undefined;
+};
+
+type AccountOptionProps = {
+  option: AccountOptionData
+}
+
+const AccountOption = ({ option }: AccountOptionProps) => {
   const { t } = useTranslation();
 
   const accountType =
@@ -36,4 +48,4 @@ const OptionContent = ({ option }: { option: ComboboxOption }) => {
   );
 };
 
-export default OptionContent;
+export default AccountOption;

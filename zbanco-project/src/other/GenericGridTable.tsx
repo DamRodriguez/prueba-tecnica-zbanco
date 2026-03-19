@@ -20,7 +20,7 @@ const GenericGridTable = <T,>({
   emptyMessage = "No hay datos disponibles",
   isLoading
 }: GenericGridTableProps<T>) => {
-  //tiene errores con las clases dinamicas con colCount
+  //tiene errores con las clases dinamicas con colCount, revisar a futuro
   const colCount = columns.length;
 
   const dynamicStyles = {
