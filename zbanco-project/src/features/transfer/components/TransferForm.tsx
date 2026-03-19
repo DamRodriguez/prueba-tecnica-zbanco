@@ -12,6 +12,7 @@ import useTransfer from "../../../components/redux/transfer/useTransfer";
 import { useState } from "react";
 import MotionStagger from "../../../components/motion/MotionStagger";
 import AccountOption, { type AccountOptionData } from "../../../other/AccountOption";
+import type { BaseOption } from "../../../components/ui/inputs/InputCombobox";
 
 const TransferForm = () => {
   const { t } = useTranslation();
@@ -59,9 +60,10 @@ const TransferForm = () => {
     errorMessage: apiErrorMessage,
   };
 
-  const renderAccountOption = (option: AccountOptionData) => (
-    <AccountOption option={option} />
-  );
+  const renderAccountOption = (option: BaseOption) => {
+    const account = option as AccountOptionData;
+    return <AccountOption option={account} />;
+  };
 
   return (
     <FormProvider {...methods}>

@@ -1,4 +1,4 @@
-import type { ComboboxOption } from "../components/ui/inputs/InputCombobox";
+import type { AccountOptionData } from "../other/AccountOption";
 
 type Account = {
   id: string;
@@ -14,7 +14,7 @@ type User = {
   accounts: Account[];
 };
 
-export const mapUsersToOptions = (users: User[]): ComboboxOption[] => {
+export const mapUsersToOptions = (users: User[]): AccountOptionData[] => {
   return users.flatMap((user) =>
     user.accounts.map((acc) => ({
       id: acc.id,

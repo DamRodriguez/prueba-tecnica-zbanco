@@ -2,10 +2,10 @@ import {
   addTransfer as addTransferAction,
 } from "./transferSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import type { ComboboxOption } from "../../ui/inputs/InputCombobox";
 import { useMemo } from "react";
 import type { MonthData } from "../../pages/dashboard/StackedBarChart/StackedBarChart";
 import { useTranslation } from "react-i18next";
+import type { AccountOptionData } from "../../../other/AccountOption";
 
 const useTransfer = () => {
   const dispatch = useAppDispatch();
@@ -98,8 +98,8 @@ const useTransfer = () => {
   }, [transactions, i18n.language]);
 
   const addTransfer = (
-    origin: ComboboxOption,
-    destination: ComboboxOption,
+    origin: AccountOptionData,
+    destination: AccountOptionData,
     amount: string,
   ) => {
     dispatch(addTransferAction({ origin, destination, amount }));

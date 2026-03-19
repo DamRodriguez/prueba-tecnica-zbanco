@@ -1,10 +1,10 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { ComboboxOption } from "../../ui/inputs/InputCombobox";
+import type { AccountOptionData } from "../../../other/AccountOption";
 
 export interface Transaction {
   id: string;
-  originAccount: ComboboxOption;
-  destinationAccount: ComboboxOption;
+  originAccount: AccountOptionData;
+  destinationAccount: AccountOptionData;
   amount: number;
   date: string;
 }
@@ -24,8 +24,8 @@ const transferSlice = createSlice({
     addTransfer: (
       state,
       action: PayloadAction<{
-        origin: ComboboxOption;
-        destination: ComboboxOption;
+        origin: AccountOptionData;
+        destination: AccountOptionData;
         amount: string;
       }>
     ) => {

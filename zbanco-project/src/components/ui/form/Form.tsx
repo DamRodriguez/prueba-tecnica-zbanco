@@ -9,6 +9,7 @@ import {
 import {
   InputCombobox as InputComboboxComponent,
   type InputComboboxProps,
+  type BaseOption,
 } from "../inputs/InputCombobox";
 import {
   InputNumber as InputNumberComponent,
@@ -76,7 +77,7 @@ function createFormInputComponent<
 }
 
 Form.InputText = createFormInputComponent<InputTextProps>(InputTextComponent);
-Form.InputCombobox = createFormInputComponent<InputComboboxProps>(InputComboboxComponent);
+Form.InputCombobox = createFormInputComponent<InputComboboxProps<BaseOption>>(InputComboboxComponent);
 Form.InputNumber = createFormInputComponent<InputNumberProps>(InputNumberComponent);
 
 export default Form;
