@@ -12,7 +12,7 @@ const MainLayout = () => {
         <Header />
         <div className="flex w-full">
           <Nav />
-          <div className="antialiased w-full min-h-svh flex flex-col bg-opaque-gray/25 pl-[4rem] sm:pl-[10rem] ">
+          <div className="antialiased w-full min-h-svh flex flex-col bg-opaque-gray/25 pl-[3.5rem] sm:pl-[10rem] ">
             <main className="w-full p-4 sm:p-10">
               <Outlet />
             </main>

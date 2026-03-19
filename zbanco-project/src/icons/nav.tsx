@@ -1,4 +1,4 @@
-const iconSize = 25;
+const iconSize = 20;
 
 export const HomeIcon = ({ className }: { className?: string }) => {
   return (
