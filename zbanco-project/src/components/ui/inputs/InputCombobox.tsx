@@ -117,7 +117,7 @@ export const InputCombobox = ({
                     <div
                       key={option.id}
                       onClick={() => handleSelect(option)}
-                      className="py-[0.5rem] px-[1rem] hover:bg-black/10"
+                      className="py-[0.5rem] px-[1rem] hover:bg-soft-gray/15"
                     >
                       <OptionContent option={option} />
                     </div>

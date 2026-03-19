@@ -12,7 +12,7 @@ const BaseContainer = (props: BaseContainerProps) => {
     <MotionFade className="w-full h-full">
       <div className={clsx("bg-white border border-soft-gray rounded-md shadow-s2 h-full flex flex-col", props.className)}>
         {props.title && (
-          <div className="bg-soft-gray/15 shadow-s1">
+          <div className="shadow-s1 bg-gradient-to-t from-soft-gray/30 to-white rounded-t-md">
             <h3 className="text-dark-gray font-semibold text-lg p-4 sm:p-5">
               {props.title}
             </h3>

@@ -38,14 +38,17 @@ const CryptoSection: React.FC = () => {
           </p>
         </div>
 
-        <MotionStagger className="divide-y divide-soft-gray">
-          {symbols.map(symbol => {
+        <MotionStagger>
+          {symbols.map((symbol, index) => {
             const data = cryptoData[symbol];
             const isUp = data?.direction === 'up';
             const isDown = data?.direction === 'down';
+            const isOdd = index % 2 !== 0;
 
             return (
-              <div key={symbol} className="grid grid-cols-3 px-3 sm:px-6 py-3 sm:py-4 items-center gap-2">
+              <div key={symbol} className={clsx("grid grid-cols-3 px-3 sm:px-6 py-3 sm:py-4 items-center gap-2", {
+                "bg-soft-gray/15": isOdd
+              })}>
                 <div className="font-bold text-xs sm:text-base truncate min-w-0">
                   {symbol.split(':')[1]}
                 </div>
