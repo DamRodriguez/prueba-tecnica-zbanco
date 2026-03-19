@@ -40,7 +40,7 @@ const LanguageDropdown = () => {
     >
       <div className={clsx(
         "py-[0.4rem] px-[0.3rem] sm:px-[0.5rem] rounded-[0.5rem] overflow-hidden transition-all duration-400 ease-in-out",
-        { "bg-blue-dark": isOpen, "bg-soft-gray/10": !isOpen }
+        { "bg-blue-dark": isOpen, "bg-soft-gray/25": !isOpen }
       )}>
         <div onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-[0.6rem] cursor-pointer">
           <div className="flex items-center gap-[0.3rem]">

@@ -10,6 +10,8 @@ import Button from "../../../components/ui/buttons/Button";
 import showToast from "../../../components/toast/showToast";
 import useTransfer from "../../../components/redux/transfer/useTransfer";
 import { useState } from "react";
+import MotionStagger from "../../../components/motion/MotionStagger";
+import { MotionOpacity } from "../../../components/motion/MotionOpacity";
 
 const TransferForm = () => {
   const { t } = useTranslation();
@@ -49,7 +51,7 @@ const TransferForm = () => {
       addTransfer(data.originAccount, data.destinationAccount, data.amountToTransfer);
       const destinationName = data.destinationAccount?.name;
       showToast("success", `${t("toast.transfer.success")} ${destinationName}`);
-      // methods.reset();
+      methods.reset();
       setIsLoading(false)
     }, 2000);
   };
@@ -59,9 +61,9 @@ const TransferForm = () => {
       <Form
         onSubmit={onSubmit}
         methods={methods}
-        className="flex flex-col gap-[1.5rem]"
+        className="flex flex-col justify-between gap-[3rem] h-full"
       >
-        <div className="flex flex-col gap-[1.5rem]">
+        <MotionStagger direction="left" className="flex flex-col gap-[1.5rem]">
           <Form.InputCombobox
             label={t("pages.home.transfer.labels.originAccount")}
             name={TransferSchemaFieldNames.originAccount}
@@ -89,14 +91,17 @@ const TransferForm = () => {
             leftItem={<span>$</span>}
             isLastErrorMessageField={false}
           />
-        </div>
-        <Button
-          variant="primary"
-          type="submit"
-          isLoading={isLoading}
-        >
-          {t("pages.home.transfer.buttons.makeTransfer")}
-        </Button>
+        </MotionStagger>
+        <MotionOpacity>
+          <Button
+            variant="primary"
+            type="submit"
+            full
+            isLoading={isLoading}
+          >
+            {t("pages.home.transfer.buttons.makeTransfer")}
+          </Button>
+        </MotionOpacity>
       </Form>
     </FormProvider>
   );

@@ -6,6 +6,8 @@ import esTransferHistory from "../assets/locales/es/home/transferHistory.json"
 import enTransferHistory from "../assets/locales/en/home/transferHistory.json"
 import esDashboard from "../assets/locales/es/dashboard.json"
 import enDashboard from "../assets/locales/en/dashboard.json"
+import esCrypto from "../assets/locales/es/home/crypto.json"
+import enCrypto from "../assets/locales/en/home/crypto.json"
 
 export const DEFAULT_NS = "main";
 
@@ -15,6 +17,7 @@ const es = {
       home: {
         transfer: esTransfer,
         transferHistory: esTransferHistory,
+        crypto: esCrypto
       },
       dashboard: esDashboard,
     },
@@ -27,7 +30,8 @@ const en = {
     pages: {
       home: {
         transfer: enTransfer,
-        transferHistory: enTransferHistory
+        transferHistory: enTransferHistory,
+        crypto: enCrypto
       },
       dashboard: enDashboard,
     },

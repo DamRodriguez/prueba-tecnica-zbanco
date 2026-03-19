@@ -8,8 +8,8 @@
       "date": "Date"
     },
     "filters": {
-      "byAccount": "Search by account ...",
-      "byAmmount": "Minimum amount ..."
+      "byAccount": "Search by account",
+      "byAmmount": "Minimum amount"
     },
     "emptyTable": "No transactions found"
   }

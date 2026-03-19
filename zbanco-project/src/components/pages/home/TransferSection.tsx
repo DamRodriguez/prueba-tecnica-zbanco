@@ -7,6 +7,7 @@ const TransferSection = () => {
   return (
     <BaseContainer
       title={t("pages.home.transfer.title")}
+      className="w-full"
     >
       <TransferForm />
     </BaseContainer>

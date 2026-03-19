@@ -8,8 +8,8 @@
       "date": "Fecha"
     },
     "filters": {
-      "byAccount": "Buscar por cuenta ...",
-      "byAmmount": "Monto mínimo ..."
+      "byAccount": "Buscar por cuenta",
+      "byAmmount": "Monto mínimo"
     },
     "emptyTable": "No se encontraron transacciones"
   }

@@ -3,12 +3,9 @@
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
   background-color: var(--color-white) !important;
-  box-shadow: var(--shadow-s2) !important;
+  box-shadow: var(--shadow-s3) !important;
   backdrop-filter: blur(3px);
   border-radius: 6px !important;
-}
-
-.Toastify__toast-icon {
 }
 
 .Toastify__progress-bar--success {
@@ -25,10 +22,6 @@
 
 .Toastify__progress-bar--warning {
   background-color: var(--color-primary-300) !important;
-}
-
-.Toastify__toast-container {
-  pointer-events: none;
 }
 
 @media (max-width: 1023px) {

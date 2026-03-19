@@ -1,0 +1,10 @@
+{
+  "title": "Mercado Crypto",
+  "table": {
+    "titles": {
+      "crypto": "Crypto",
+      "price": "Precio",
+      "change": "Cambio"
+    }
+  }
+}
