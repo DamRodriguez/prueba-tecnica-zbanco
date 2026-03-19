@@ -29,7 +29,7 @@ jobs:
         run: npm run build
         working-directory: ./zbanco-project
         env:
-          VITE_FINNHUB_API_KEY: ${{ secrets.VITE_FINNHUB_KEY }}
+          VITE_FINNHUB_KEY: ${{ secrets.VITE_FINNHUB_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
