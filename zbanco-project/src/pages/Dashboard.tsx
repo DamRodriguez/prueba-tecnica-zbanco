@@ -13,9 +13,7 @@ const Dashboard = () => {
   const { totalTransactions, totalAmountTransferred, mostActiveAccount, amountDistribution, monthlyStatus } = useTransfer();
 
   return (
-    <BaseContainer
-      title={t("pages.dashboard.title")}
-    >
+    <BaseContainer>
       <div className="flex flex-col xl:flex-row gap-5 sm:gap-10">
         <div className="flex flex-col gap-5 sm:gap-10 items-center">
           <div className="flex flex-col xl:flex-row gap-5 sm:gap-10">
