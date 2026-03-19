@@ -11,7 +11,6 @@ import showToast from "../../../components/toast/showToast";
 import useTransfer from "../../../components/redux/transfer/useTransfer";
 import { useState } from "react";
 import MotionStagger from "../../../components/motion/MotionStagger";
-import { MotionOpacity } from "../../../components/motion/MotionOpacity";
 
 const TransferForm = () => {
   const { t } = useTranslation();
@@ -92,16 +91,14 @@ const TransferForm = () => {
             isLastErrorMessageField={false}
           />
         </MotionStagger>
-        <MotionOpacity>
-          <Button
-            variant="primary"
-            type="submit"
-            full
-            isLoading={isLoading}
-          >
-            {t("pages.home.transfer.buttons.makeTransfer")}
-          </Button>
-        </MotionOpacity>
+        <Button
+          variant="primary"
+          type="submit"
+          full
+          isLoading={isLoading}
+        >
+          {t("pages.home.transfer.buttons.makeTransfer")}
+        </Button>
       </Form>
     </FormProvider>
   );
