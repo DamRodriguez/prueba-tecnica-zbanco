@@ -1,5 +1,8 @@
 {
   "transfer": {
     "success": "Transferencia enviada con éxito a"
+  },
+  "crypto": {
+    "webSocketError": "Error al sincronizar con el mercado de criptomonedas"
   }
 }

@@ -62,7 +62,7 @@ const TransferForm = () => {
         methods={methods}
         className="flex flex-col justify-between gap-[3rem] h-full"
       >
-        <MotionStagger direction="left" className="flex flex-col gap-[1.5rem]">
+        <MotionStagger className="flex flex-col gap-[1.5rem]">
           <Form.InputCombobox
             label={t("pages.home.transfer.labels.originAccount")}
             name={TransferSchemaFieldNames.originAccount}

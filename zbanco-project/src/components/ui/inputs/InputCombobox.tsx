@@ -111,7 +111,7 @@ export const InputCombobox = ({
         {isOpen && (
           <div className="absolute z-50 mt-1 w-full bg-white border rounded-md shadow-md overflow-hidden shadow-s2">
             <MotionHeight>
-              <div className="max-h-[15rem] scrollbarCustom overflow-y-auto">
+              <div className="max-h-[10.5rem] sm:max-h-[15.5rem] scrollbarCustom overflow-y-auto">
                 {filteredOptions.map(option => {
                   return (
                     <div
