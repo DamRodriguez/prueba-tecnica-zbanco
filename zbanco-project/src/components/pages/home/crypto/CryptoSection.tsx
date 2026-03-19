@@ -26,7 +26,7 @@ const CryptoSection: React.FC = () => {
     >
       <div className="border border-soft-gray rounded-md overflow-hidden">
 
-        <div className="grid grid-cols-3 px-3 sm:px-6 py-3 sm:py-4 text-sm sm:text-base gap-2 font-semibold text-medium-gray shadow-s1 bg-blue-dark/10">
+        <div className="grid grid-cols-3 px-3 sm:px-6 py-3 sm:py-4 text-sm sm:text-base gap-2 font-semibold text-white shadow-s1 bg-gradient-to-l from-medium-blue/90 to-blue-dark/95">
           <p className="truncate">
             {t("pages.home.crypto.table.titles.crypto")}
           </p>

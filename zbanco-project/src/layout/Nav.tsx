@@ -17,7 +17,7 @@ const navItems: NavItem[] = [
 
 const navClasses = {
   active: {
-    link: "bg-blue/20 shadow-s1",
+    link: "bg-blue-soft/20 shadow-s1",
   },
   inactive: {
     link: "bg-transparent",
@@ -37,7 +37,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="bg-white w-fit h-screen fixed z-10 shadow-s3">
+    <nav className="w-fit h-screen fixed z-10 shadow-s3 bg-[linear-gradient(0deg,#1a184f,var(--color-blue-dark))]">
       <ul className="flex flex-col">
         {navItems.map(item => {
           const current = activeItemId === item.id ? navClasses.active : navClasses.inactive;
@@ -47,7 +47,7 @@ const Nav = () => {
               <button
                 onClick={() => handleNavClick(item.path)}
                 className={clsx(
-                  "text-xs sm:text-base font-medium flex justify-center items-center p-[0.6rem] px-[1rem] sm:px-[2rem] w-full cursor-pointer hover:bg-black/10",
+                  "text-xs sm:text-base font-medium flex justify-center items-center p-[0.6rem] px-[1rem] sm:px-[2rem] w-full cursor-pointer hover:bg-blue-soft/10 text-white",
                   current.link
                 )}
               >

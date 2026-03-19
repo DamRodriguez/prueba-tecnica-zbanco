@@ -1,17 +1,17 @@
 import { tv } from "tailwind-variants";
 
 export const buttonClass = tv({
-  base: "text-base sm:text-lg leading-[1.5rem] font-semibold tracking-[-0.04375rem] py-[0.62rem] px-[1.62rem] rounded-[0.375rem] flex items-center justify-center cursor-pointer min-h-[2.75rem]",
+  base: "text-base sm:text-lg leading-[1.5rem] font-semibold tracking-[-0.04375rem] py-[0.62rem] px-[1.62rem] rounded-[0.375rem] flex items-center justify-center cursor-pointer min-h-[2.75rem] hover:scale-102 transition-all duration-400 shadow-s2",
   variants: {
     intent: {
-      primary: "bg-blue text-white",
+      primary: "bg-gradient-to-r from-blue to-blue-light text-white",
       secondary: "bg-red-100 text-neutral-100",
       tertiary: "bg-transparent border border-neutral-1000",
       quaternary: "bg-primary-300 text-neutral-1000",
       quintary: "bg-neutral-100 text-neutral-100",
     },
     disabled: {
-      true: "cursor-not-allowed bg-soft-gray",
+      true: "cursor-not-allowed bg-soft-gray/60",
       false: "",
     },
     outline: {
