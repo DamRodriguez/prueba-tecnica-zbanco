@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import { routes } from "../constants/routes";
 import { DashboardIcon, HomeIcon } from "../icons/nav";
+import { useTranslation } from "react-i18next";
 
 interface NavItem {
   id: number;
@@ -9,11 +10,6 @@ interface NavItem {
   path: string;
   icon: React.ReactElement;
 }
-
-const navItems: NavItem[] = [
-  { id: 0, text: "Inicio", path: routes.pages.home, icon: <HomeIcon /> },
-  { id: 1, text: "Dashboard", path: routes.pages.dashboard, icon: <DashboardIcon /> },
-];
 
 const navClasses = {
   active: {
@@ -25,8 +21,14 @@ const navClasses = {
 };
 
 const Nav = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const navItems: NavItem[] = [
+    { id: 0, text: t("layout.nav.routes.home"), path: routes.pages.home, icon: <HomeIcon /> },
+    { id: 1, text: t("layout.nav.routes.dashboard"), path: routes.pages.dashboard, icon: <DashboardIcon /> },
+  ];
 
   const activeItemId = navItems.find(item =>
     item.path === "/" ? location.pathname === "/" : location.pathname.startsWith(item.path)

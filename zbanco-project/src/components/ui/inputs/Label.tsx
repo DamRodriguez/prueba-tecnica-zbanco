@@ -12,7 +12,7 @@ const Label = ({ htmlFor, children, hasValue }: LabelProps) => {
   return (
     <label
       htmlFor={htmlFor}
-      className={clsx("text-base leading-[1.3125rem] group-focus-within:text-medium-gray transition-all w-fit", {
+      className={clsx("text-sm sm:text-base leading-[1.3125rem] group-focus-within:text-medium-gray transition-all w-fit", {
         "text-black": hasValue,
         "text-medium-gray": !hasValue,
       })}

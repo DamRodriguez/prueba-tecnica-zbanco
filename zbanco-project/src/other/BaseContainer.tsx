@@ -13,7 +13,7 @@ const BaseContainer = (props: BaseContainerProps) => {
       <div className={clsx("bg-white border border-soft-gray rounded-md shadow-s2 h-full flex flex-col", props.className)}>
         {props.title && (
           <div className="shadow-s1 bg-gradient-to-t from-soft-gray/30 to-white rounded-t-md">
-            <h3 className="text-dark-gray font-semibold text-lg p-4 sm:p-5">
+            <h3 className="text-dark-gray font-semibold text-base sm:text-lg p-3 sm:p-5">
               {props.title}
             </h3>
           </div>

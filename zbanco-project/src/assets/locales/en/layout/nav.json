@@ -1,0 +1,6 @@
+{
+  "routes": {
+    "home": "Home",
+    "dashboard": "Dashboard"
+  }
+}
